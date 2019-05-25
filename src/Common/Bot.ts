@@ -240,7 +240,7 @@ class Bot {
 
         for (let i = 0; i < this.commands.length; i++) {
 
-            console.log(this.commands[ i ].config.event);
+            console.log(this.commands[ i ].config);
 
             if (this.commands[ i ].config.event === event && this.commands[ i ].config.name === command.command || this.commands[ i ].config.name === '*') {
 
