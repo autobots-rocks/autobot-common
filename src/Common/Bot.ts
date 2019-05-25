@@ -42,7 +42,7 @@ class Bot {
 
         this.entities = [ ...this.entities, commandRef.config.entities ];
 
-        Logger.log(`Command Registered: ${ commandRef.config.name } (${ commandRef.config.description })`);
+        Logger.log(`Command asdfRegistered: ${ commandRef.config.name } (${ commandRef.config.description })`);
 
     }
 
@@ -234,7 +234,13 @@ class Bot {
      */
     public runCommand(event: Event, command: CommandParser): void {
 
+        console.log(55, command);
+
+        console.log(`runCommand: ${ event }`);
+
         for (let i = 0; i < this.commands.length; i++) {
+
+            console.log(this.commands[ i ].config.event);
 
             if (this.commands[ i ].config.event === event && this.commands[ i ].config.name === command.command || this.commands[ i ].config.name === '*') {
 
