@@ -7,6 +7,8 @@ import { BOT } from './Bot';
  */
 export function Command(target: any): void {
 
+    console.log(1000, target);
+
     //
     // Register the class annotated with @Command
     //

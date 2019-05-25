@@ -9,8 +9,6 @@ export class DB {
 
         try {
 
-            console.log(__dirname);
-
             if (this.connection) {
 
                 Logger.log('Already connected to the database!');
@@ -27,7 +25,7 @@ export class DB {
                     database: process.env.MYSQL_DATABASE,
                     entities: [ 'node_modules/@autobot/module-*/dist/DB/*.js' ],
                     synchronize: true,
-                    logging: true
+                    logging: false
 
                 });
 

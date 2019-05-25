@@ -49,7 +49,7 @@ class Bot {
     /**
      * Start the bot.
      */
-    public async start() {
+    public async start(currentPath: string) {
 
         //
         // Bind discord.js events
@@ -57,17 +57,22 @@ class Bot {
         this.client.on('message', (message: MESSAGE_TYPE) => this.handleMessage(Event.MESSAGE, message));
         this.client.on('guildMemberAdd', (guildMember: GuildMember) => this.handleEvent(Event.GUILD_MEMBER_ADD, guildMember));
 
-        this.client.login(process.env.TOKEN);
+        Logger.log('Logging into Discord');
 
         //
         // Load Command Classes
         //
         // require('../Commands');
 
-        await glob('node_modules/@autobot/module-*', (err: any, commands: any) => {
+        await glob(`${ currentPath }/node_modules/@autobot/module-*`, (err: any, commands: any) => {
 
-            commands.map((command: CommandBase) => require('../../../../../' + command));
+            commands.map((command: any) => {
 
+                Logger.log(`Bootstrapping ${ command }`);
+                // commands.map((command: CommandBase) => require('../../../../../' + command));
+                commands.map((command: CommandBase) => require(command.toString()));
+
+            });
             //
             // Connect to database
             //
@@ -77,9 +82,10 @@ class Bot {
 
             }
 
+            Logger.log('Bot Started');
+
         });
 
-        Logger.log('Bot Started');
 
     }
 
@@ -111,10 +117,14 @@ class Bot {
 
             const command = new CommandParser(message);
 
+            console.log(111);
+
             //
             // Run the preCommand validation checks before executing runCommand.
             //
             if (this.preCommand(event, command)) {
+
+                console.log(2222);
 
                 this.runCommand(event, command);
 
