@@ -57,7 +57,13 @@ class Bot {
         this.client.on('message', (message: MESSAGE_TYPE) => this.handleMessage(Event.MESSAGE, message));
         this.client.on('guildMemberAdd', (guildMember: GuildMember) => this.handleEvent(Event.GUILD_MEMBER_ADD, guildMember));
 
-        Logger.log('Logging into Discord');
+        Logger.log('Logging into discord');
+
+        this.client.login(process.env.TOKEN).then(() => {
+
+            Logger.log('Connected to discord');
+
+        });
 
         //
         // Load Command Classes
@@ -117,14 +123,10 @@ class Bot {
 
             const command = new CommandParser(message);
 
-            console.log(111);
-
             //
             // Run the preCommand validation checks before executing runCommand.
             //
             if (this.preCommand(event, command)) {
-
-                console.log(2222);
 
                 this.runCommand(event, command);
 
