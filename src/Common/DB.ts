@@ -7,35 +7,39 @@ export class DB {
 
     public static async connect() {
 
-        try {
+        if (process.env.MYSQL_HOST) {
+            
+            try {
 
-            if (this.connection) {
+                if (this.connection) {
 
-                Logger.log('Already connected to the database!');
+                    Logger.log('Already connected to the database!');
 
-            } else {
+                } else {
 
-                this.connection = await createConnection({
+                    this.connection = await createConnection({
 
-                    type: "mysql",
-                    host: process.env.MYSQL_HOST,
-                    port: Number(process.env.MYSQL_PORT),
-                    username: process.env.MYSQL_USER,
-                    password: process.env.MYSQL_PASSWORD,
-                    database: process.env.MYSQL_DATABASE,
-                    entities: [ 'node_modules/@autobot/module-*/dist/DB/*.js' ],
-                    synchronize: true,
-                    logging: false
+                        type: "mysql",
+                        host: process.env.MYSQL_HOST,
+                        port: Number(process.env.MYSQL_PORT),
+                        username: process.env.MYSQL_USER,
+                        password: process.env.MYSQL_PASSWORD,
+                        database: process.env.MYSQL_DATABASE,
+                        entities: [ 'node_modules/@autobot/module-*/dist/DB/*.js' ],
+                        synchronize: true,
+                        logging: false
 
-                });
+                    });
 
-                Logger.log(`Connected to database ${ process.env.MYSQL_HOST }:${ process.env.MYSQL_PORT }`);
+                    Logger.log(`Connected to database ${ process.env.MYSQL_HOST }:${ process.env.MYSQL_PORT }`);
+
+                }
+
+            } catch (e) {
+
+                console.log(e);
 
             }
-
-        } catch (e) {
-
-            console.log(e);
 
         }
 
