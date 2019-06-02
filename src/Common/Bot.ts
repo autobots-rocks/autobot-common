@@ -82,7 +82,7 @@ class Bot {
             //
             // Connect to database
             //
-            if (this.entities.length > 0) {
+            if (process.env.MYSQL_HOST && this.entities.length > 0) {
 
                 DB.connect();
 
