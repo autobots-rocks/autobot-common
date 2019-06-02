@@ -7,8 +7,11 @@ export class DB {
 
     public static async connect() {
 
+        console.log(process.env);
+        console.log(process.env.MYSQL_HOST);
+
         if (process.env.MYSQL_HOST) {
-            
+
             try {
 
                 if (this.connection) {
