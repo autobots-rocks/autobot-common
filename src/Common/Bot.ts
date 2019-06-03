@@ -40,7 +40,11 @@ class Bot {
 
         this.commands.push(commandRef);
 
-        this.entities = [ ...this.entities, commandRef.config.entities ];
+        if (commandRef.config.entities) {
+
+            this.entities = [ ...this.entities, commandRef.config.entities ];
+
+        }
 
         Logger.log(`Command Registered: ${ commandRef.config.name } (${ commandRef.config.description })`);
 
