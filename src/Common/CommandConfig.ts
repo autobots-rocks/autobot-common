@@ -10,6 +10,7 @@ export class CommandConfig {
     public description?: string;
     public params?: CommandParam[];
     public roles?: string[];
+    public requiredEnvVars?: string[];
     public entities?: any[];
 
 }

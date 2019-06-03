@@ -42,6 +42,31 @@ class Bot {
 
             this.commands.push(commandRef);
 
+            //
+            // Check for required .env variables.
+            //
+            if (commandRef.config.requiredEnvVars) {
+
+                const errors: Array<string> = [];
+
+                commandRef.config.requiredEnvVars.forEach(env => {
+
+                    if (!process.env[ env ]) {
+
+                        errors.push(env);
+
+                    }
+
+                });
+
+                if (errors.length > 0) {
+
+                    throw `The following environment variables are missing: ${ errors.join(', ') }! Add them to your .env file!`;
+
+                }
+
+            }
+
             if (commandRef.config.entities) {
 
                 this.entities = [ ...this.entities, commandRef.config.entities ];
