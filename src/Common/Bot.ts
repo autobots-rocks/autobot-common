@@ -38,15 +38,19 @@ class Bot {
      */
     public register(commandRef: CommandBase): void {
 
-        this.commands.push(commandRef);
+        if (commandRef.config) {
 
-        if (commandRef.config.entities) {
+            this.commands.push(commandRef);
 
-            this.entities = [ ...this.entities, commandRef.config.entities ];
+            if (commandRef.config.entities) {
+
+                this.entities = [ ...this.entities, commandRef.config.entities ];
+
+            }
+
+            Logger.log(`Command Registered: ${ commandRef.config.name } (${ commandRef.config.description })`);
 
         }
-
-        Logger.log(`Command Registered: ${ commandRef.config.name } (${ commandRef.config.description })`);
 
     }
 
