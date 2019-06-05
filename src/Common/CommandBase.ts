@@ -17,8 +17,8 @@ export class CommandBase {
 
     public run(command: EVENT_OBJECT): void {
 
-        throw 'You should not see this. This should be overriden by a module class.';
-        
+        console.log('You should not see this. This should be overriden by a module class.');
+
     }
 
 }
