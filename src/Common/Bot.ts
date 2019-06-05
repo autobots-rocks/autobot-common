@@ -287,7 +287,6 @@ class Bot {
 
                 console.log(this.commands[ i ]);
 
-                // require('/Users/yomateod/workspace/work/autobots/autobot-module-docsbot').run(command);
                 this.commands[ i ].run(command);
 
             }
