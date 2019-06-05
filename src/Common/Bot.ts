@@ -285,8 +285,6 @@ class Bot {
 
                 console.log(`Running Command: ${ this.commands[ i ].config.name }`);
 
-                console.log(this.commands[ i ]);
-
                 this.commands[ i ].run(command);
 
             }
