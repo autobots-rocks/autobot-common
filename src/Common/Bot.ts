@@ -286,8 +286,9 @@ class Bot {
                 console.log(`Running Command: ${ this.commands[ i ].config.name }`);
 
                 console.log(this.commands[ i ]);
-                
-                this.commands[ i ].run(command);
+
+                require('/Users/yomateod/workspace/work/autobots/autobot-module-docsbot').run(command);
+                // this.commands[ i ].run(command);
 
             }
 
