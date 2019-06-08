@@ -285,7 +285,7 @@ class Bot {
 
                 if (command.command.match(new RegExp(this.commands[ i ].config.pattern))) {
 
-                    console.log(`Running Pattern Command: ${ this.commands[ i ].config.name }`);
+                    console.log(`Running Pattern Command: ${ this.commands[ i ].config.pattern }`);
 
                     this.commands[ i ].run(command);
 
