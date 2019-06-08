@@ -281,11 +281,25 @@ class Bot {
 
         for (let i = 0; i < this.commands.length; i++) {
 
-            if (this.commands[ i ].config.event === event && this.commands[ i ].config.name === command.command || this.commands[ i ].config.name === '*') {
+            if (this.commands[ i ].config.event === event && this.commands[ i ].config.pattern) {
 
-                console.log(`Running Command: ${ this.commands[ i ].config.name }`);
+                if (this.commands[ i ].config.name.match(new RegExp(this.commands[ i ].config.pattern))) {
 
-                this.commands[ i ].run(command);
+                    console.log(`Running Pattern Command: ${ this.commands[ i ].config.name }`);
+
+                    this.commands[ i ].run(command);
+
+                }
+
+            } else {
+
+                if (this.commands[ i ].config.event === event && this.commands[ i ].config.name === command.command || this.commands[ i ].config.name === '*') {
+
+                    console.log(`Running Command: ${ this.commands[ i ].config.name }`);
+
+                    this.commands[ i ].run(command);
+
+                }
 
             }
 
