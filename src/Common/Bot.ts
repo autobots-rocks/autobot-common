@@ -283,7 +283,7 @@ class Bot {
 
             if (this.commands[ i ].config.event === event && this.commands[ i ].config.pattern) {
 
-                if (this.commands[ i ].config.name.match(new RegExp(this.commands[ i ].config.pattern))) {
+                if (command.command.match(new RegExp(this.commands[ i ].config.pattern))) {
 
                     console.log(`Running Pattern Command: ${ this.commands[ i ].config.name }`);
 
