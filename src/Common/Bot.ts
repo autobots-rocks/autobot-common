@@ -99,21 +99,20 @@ class Bot {
         });
 
         //
-        // Load Command Classes
+        // Load Module Classes
         //
-        // require('../Commands');
-
         await glob(`${ currentPath }/node_modules/@autobot/module-*`, (err: any, commands: any) => {
 
             commands.map((command: any) => {
 
                 Logger.log(`Bootstrapping ${ command }`);
-                // commands.map((command: CommandBase) => require('../../../../../' + command));
+
                 commands.map((command: CommandBase) => require(command.toString()));
 
             });
+
             //
-            // Connect to database
+            // (optionaly) Connect to database
             //
             if (process.env.MYSQL_HOST && this.entities.length > 0) {
 
@@ -124,7 +123,6 @@ class Bot {
             Logger.log('Bot Started');
 
         });
-
 
     }
 
