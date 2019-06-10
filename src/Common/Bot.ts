@@ -20,7 +20,7 @@ class Bot {
     /**
      * Used for passing events to/from the bot context.
      */
-    public events$: ReplaySubject<{ name: string, payload: string }> = new ReplaySubject(1);
+    public events$: ReplaySubject<{ name: string, payload: any }> = new ReplaySubject(1);
 
     /**
      * Discord.js Client
