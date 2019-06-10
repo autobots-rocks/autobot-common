@@ -2,6 +2,7 @@ import * as Discord                    from 'discord.js';
 import { GuildMember, RichEmbed }      from 'discord.js';
 import * as dotenv                     from 'dotenv';
 import * as glob                       from 'glob';
+import { ReplaySubject }               from 'rxjs';
 import { CommandBase }                 from './CommandBase';
 import { CommandParser, MESSAGE_TYPE } from './CommandParser';
 import { DB }                          from './DB';
@@ -15,6 +16,11 @@ import { Logger }                      from './Logger';
 dotenv.config();
 
 class Bot {
+
+    /**
+     * Used for passing events to/from the bot context.
+     */
+    public events$: ReplaySubject<{ name: string, payload: string }> = new ReplaySubject();
 
     /**
      * Discord.js Client
@@ -101,7 +107,7 @@ class Bot {
         //
         // Load Module Classes
         //
-        await glob(`${ currentPath }/node_modules/@autobot/module-*`, (err: any, commands: any) => {
+        await glob(`${ currentPath }/node_modules/${ process.env.NAMESPACE }/${ process.env.MODULE_PATTERN }`, (err: any, commands: any) => {
 
             commands.map((command: any) => {
 
