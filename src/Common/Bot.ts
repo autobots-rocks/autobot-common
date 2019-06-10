@@ -25,7 +25,7 @@ class Bot {
     /**
      * Discord.js Client
      */
-    public client: any = new Discord.Client();
+    public client: Discord.Client = new Discord.Client();
 
     /**
      * Array of Command Class References
@@ -36,16 +36,6 @@ class Bot {
      * Array of Database Entities
      */
     private entities: Array<any> = [];
-
-    public constructor() {
-
-        this.events$.subscribe(event => {
-
-            console.log('event: ', event);
-
-        });
-
-    }
 
     /**
      * Called by the @Command decorated classes
