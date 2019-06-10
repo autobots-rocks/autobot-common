@@ -37,6 +37,16 @@ class Bot {
      */
     private entities: Array<any> = [];
 
+    public constructor() {
+
+        this.events$.subscribe(event => {
+
+            console.log('event: ', event);
+
+        });
+
+    }
+
     /**
      * Called by the @Command decorated classes
      *
