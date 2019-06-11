@@ -107,7 +107,7 @@ class Bot {
 
             this.events$.next({
 
-                name: Bot.EVENT_DISCORD_CONNECTED
+                name: this.EVENT_DISCORD_CONNECTED
 
             });
 
