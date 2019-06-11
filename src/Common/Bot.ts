@@ -18,6 +18,7 @@ dotenv.config();
 class Bot {
 
     public static readonly EVENT_DISCORD_CONNECTED = 'EVENT_DISCORD_CONNECTED';
+    public static readonly EVENT_DISCORD_DISCONNECTED = 'EVENT_DISCORD_DISCONNECTED';
 
     /**
      * Used for passing events to/from the bot context.
