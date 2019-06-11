@@ -17,10 +17,12 @@ dotenv.config();
 
 class Bot {
 
+    public static readonly EVENT_DISCORD_CONNECTED = 'EVENT_DISCORD_CONNECTED';
+
     /**
      * Used for passing events to/from the bot context.
      */
-    public events$: ReplaySubject<{ name: string, payload: any }> = new ReplaySubject(1);
+    public events$: ReplaySubject<{ name: string, payload?: any }> = new ReplaySubject(1);
 
     /**
      * Discord.js Client
@@ -101,6 +103,12 @@ class Bot {
         this.client.login(process.env.TOKEN).then(() => {
 
             Logger.log('Connected to discord');
+
+            this.events$.next({
+
+                name: Bot.EVENT_DISCORD_CONNECTED
+
+            });
 
         });
 
