@@ -5,6 +5,7 @@ export * from './Common/CommandConfig';
 export * from './Common/CommandDecorator';
 export * from './Common/CommandParam';
 export * from './Common/CommandParser';
+export * from './Common/Config';
 export * from './Common/Event';
 export * from './Common/EventObjectType';
 export * from './Common/Logger';
