@@ -292,6 +292,9 @@ class Bot {
      */
     public runCommand(event: Event, command: CommandParser): void {
 
+        console.log(event);
+        console.log(command);
+
         for (let i = 0; i < this.commands.length; i++) {
 
             if (this.commands[ i ].config.event === event && this.commands[ i ].config.pattern) {
