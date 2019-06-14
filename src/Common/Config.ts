@@ -2,11 +2,19 @@ import * as fs from "fs";
 
 export class Config {
 
-    public static load<T>(): T {
+    public static load<T>(property?: string): T {
 
         if (fs.existsSync(process.env.CONFIG_PATH)) {
 
-            return require(process.env.CONFIG_PATH);
+            if (property) {
+
+                return require(process.env.CONFIG_PATH)[ property ];
+
+            } else {
+
+                return require(process.env.CONFIG_PATH);
+
+            }
 
         }
 
