@@ -16,6 +16,10 @@ export class Config {
 
             }
 
+        } else {
+
+            return <T>{};
+
         }
 
     }
