@@ -2,13 +2,13 @@ import * as fs from "fs";
 
 export class Config {
 
-    public static load<T>(property?: string): T {
+    public static load<T>(path: string, property?: string): T {
 
-        if (fs.existsSync(process.env.CONFIG_PATH)) {
+        if (fs.existsSync(path)) {
 
             if (property) {
 
-                return require(process.env.CONFIG_PATH)[ property ];
+                return require(path)[ property ];
 
             } else {
 
@@ -24,19 +24,19 @@ export class Config {
 
     }
 
-    public static save(config: any): void {
+    public static save(path: string, config: any): void {
 
-        fs.writeFileSync(process.env.CONFIG_PATH, JSON.stringify(config));
+        fs.writeFileSync(path, JSON.stringify(config));
 
     }
 
-    public static write(propertyName: string, value: any): Config {
+    public static write(path: string, propertyName: string, value: any): Config {
 
-        const config: any = Config.load() || {};
+        const config: any = Config.load(path) || {};
 
         config[ propertyName ] = value;
 
-        Config.save(config);
+        Config.save(path, config);
 
         return config;
 
