@@ -6,7 +6,7 @@ export class Config {
 
         if (fs.existsSync(path)) {
 
-            return require(process.env.CONFIG_PATH);
+            return require(path);
 
         } else {
 
