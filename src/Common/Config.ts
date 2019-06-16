@@ -34,4 +34,28 @@ export class Config {
 
     }
 
+    public static remove(path: string, propertyName: string): boolean {
+
+        let found = false;
+
+        if (fs.existsSync(path)) {
+
+            const config = require(path);
+
+            if (config[ propertyName ]) {
+
+                found = true;
+
+                delete config[ propertyName ];
+
+                Config.save(path, config);
+                
+            }
+
+        }
+
+        return found;
+
+    }
+
 }
