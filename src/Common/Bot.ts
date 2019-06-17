@@ -41,6 +41,11 @@ class Bot {
     private entities: Array<any> = [];
 
     /**
+     * Current working directory where the bot started.
+     */
+    public currentPath: string;
+
+    /**
      * Called by the @Command decorated classes
      *
      * @param commandRef Command class reference.
@@ -93,6 +98,8 @@ class Bot {
      */
     public async start(currentPath: string) {
 
+        this.currentPath = currentPath;
+        
         //
         // Bind discord.js events
         //
