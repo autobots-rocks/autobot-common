@@ -1,4 +1,5 @@
 export * from './Common/Bot';
+export * from './Common/Colors';
 export * from './Common/CommandArgument';
 export * from './Common/CommandBase';
 export * from './Common/CommandConfig';
